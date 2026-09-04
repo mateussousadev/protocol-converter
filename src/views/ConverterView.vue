@@ -39,10 +39,18 @@ Exemplo:
 #7003 [PHB] - ATUALIZAR MÓDULO DE TURMAS
 Funcionalidade: ...
 Contexto: ...
-Cenário 1: Corrigir cálculo
+
+Regra: Permissões no módulo Turmas
+Cenário: Visualizar turmas
   Dado que...
   Quando...
-  Então..."
+  Então...
+
+Esquema do Cenário: Criar usuário
+  Quando criar um usuário do tipo &quot;&lt;tipo&gt;&quot;
+Exemplos:
+| tipo |
+| Diretor |"
             spellcheck="false"
             @input="onInput"
           />
@@ -78,6 +86,9 @@ Cenário 1: Corrigir cálculo
             <h2 class="panel-title">
               Markdown gerado
               <span v-if="result" class="result-meta">
+                <template v-if="result.regraCount">
+                  · {{ result.regraCount }} regra{{ result.regraCount !== 1 ? 's' : '' }}
+                </template>
                 · {{ result.cenarioCount }} cenário{{ result.cenarioCount !== 1 ? 's' : '' }}
               </span>
             </h2>
